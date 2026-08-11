@@ -13,7 +13,6 @@
     --card-bg: rgba(22, 25, 34, 0.85);
     --gold: #FFD700;
     --neon-red: #FF2A4B;
-    --neon-blue: #00E5FF;
     --text-white: #F8FAFC;
     --text-dim: #94A3B8;
   }
@@ -36,10 +35,8 @@
     max-width: 600px;
     margin: 0 auto;
     padding-bottom: 50px;
-    position: relative;
   }
 
-  /* Animated Header Banner */
   .checker-pattern {
     height: 16px;
     width: 100%;
@@ -91,11 +88,6 @@
     letter-spacing: 0.5px;
   }
 
-  .subtitle strong {
-    color: var(--text-white);
-  }
-
-  /* Race Track Visual */
   .track-container {
     margin: 28px 20px;
     background: rgba(15, 23, 42, 0.8);
@@ -152,7 +144,6 @@
     font-size: 24px;
   }
 
-  /* Information Glass Cards */
   .card {
     margin: 0 20px 20px;
     background: var(--card-bg);
@@ -171,9 +162,6 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0 0 18px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
 
   .info-row {
@@ -228,85 +216,13 @@
     font-size: 13px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.2s;
   }
 
-  .map-btn:hover {
-    background: var(--neon-red);
-    color: #FFF;
-  }
-
-  /* Form Controls */
-  .form-group {
-    margin-bottom: 18px;
-  }
-
-  .form-group label {
+  .google-rsvp-btn {
     display: block;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 8px;
-  }
-
-  .form-group input {
     width: 100%;
-    padding: 14px 16px;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    color: #FFF;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 15px;
-    transition: all 0.2s;
-  }
-
-  .form-group input:focus {
-    outline: none;
-    border-color: var(--gold);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-  }
-
-  .rsvp-toggle {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .toggle-btn {
-    padding: 14px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    color: var(--text-white);
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .toggle-btn.active-yes {
-    background: rgba(34, 197, 94, 0.2);
-    border-color: #22C55E;
-    color: #4ADE80;
-    box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
-  }
-
-  .toggle-btn.active-no {
-    background: rgba(239, 68, 68, 0.2);
-    border-color: #EF4444;
-    color: #F87171;
-    box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);
-  }
-
-  .submit-btn {
-    width: 100%;
-    padding: 16px;
-    margin-top: 10px;
+    padding: 18px;
+    text-align: center;
     background: linear-gradient(135deg, var(--gold) 0%, #F59E0B 100%);
     border: none;
     border-radius: 12px;
@@ -316,42 +232,13 @@
     font-size: 16px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    cursor: pointer;
+    text-decoration: none;
     box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
-    transition: all 0.2s ease;
+    transition: transform 0.2s;
   }
 
-  .submit-btn:hover {
+  .google-rsvp-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 24px rgba(245, 158, 11, 0.4);
-  }
-
-  .submit-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-
-  /* Success Message Card */
-  .success-box {
-    display: none;
-    text-align: center;
-    padding: 20px;
-    background: rgba(34, 197, 94, 0.15);
-    border: 1px solid #22C55E;
-    border-radius: 16px;
-    margin-top: 16px;
-  }
-
-  .success-box h3 {
-    margin: 0 0 6px;
-    color: #4ADE80;
-    font-family: 'Orbitron', sans-serif;
-  }
-
-  .success-box p {
-    margin: 0;
-    font-size: 14px;
-    color: var(--text-dim);
   }
 
   footer {
@@ -369,14 +256,12 @@
 <div class="page">
   <div class="checker-pattern"></div>
 
-  <!-- Header -->
   <div class="hero">
     <p class="eyebrow">🏎️ Start Your Engines</p>
     <h1>Armaan Turns<br><span class="gold-text">ONE</span></h1>
     <p class="subtitle">Celebrating the 1st Birthday of<br><strong>Armaan Singh Ghuman</strong></p>
   </div>
 
-  <!-- Animated Track -->
   <div class="track-container">
     <div class="road">
       <div class="road-line"></div>
@@ -385,7 +270,6 @@
     </div>
   </div>
 
-  <!-- Event Details -->
   <div class="card">
     <div class="card-title">📍 Event Details</div>
     
@@ -406,99 +290,27 @@
           5200 Mowry Ave, Suite K<br>
           Fremont, CA 94538
         </p>
-        <a href="https://maps.google.com/?q=Royale+Sakoon+5200+Mowry+Ave+Suite+K+Fremont+CA+94538" target="_blank" class="map-link map-btn">
+        <a href="https://maps.google.com/?q=Royale+Sakoon+5200+Mowry+Ave+Suite+K+Fremont+CA+94538" target="_blank" class="map-btn">
           📍 Open in Google Maps ↗
         </a>
       </div>
     </div>
   </div>
 
-  <!-- RSVP Form -->
   <div class="card">
     <div class="card-title">🏁 RSVP Pit Stop</div>
-
-    <form id="rsvpForm">
-      <div class="form-group">
-        <label for="guestName">Your Full Name</label>
-        <input type="text" id="guestName" placeholder="e.g. Priya Kaur" required>
-      </div>
-
-      <div class="form-group">
-        <label for="guestCount">Number of Guests (including you)</label>
-        <input type="number" id="guestCount" min="1" value="1" required>
-      </div>
-
-      <div class="form-group">
-        <label>Are You Coming?</label>
-        <div class="rsvp-toggle">
-          <button type="button" class="toggle-btn" id="btnYes" onclick="setAttendance('yes')">🏁 Yes, Count Me In!</button>
-          <button type="button" class="toggle-btn" id="btnNo" onclick="setAttendance('no')">🚧 Can't Make It</button>
-        </div>
-      </div>
-
-      <button type="submit" class="submit-btn" id="submitBtn">Confirm RSVP</button>
-    </form>
-
-    <div class="success-box" id="successBox">
-      <h3>🎉 RSVP Confirmed!</h3>
-      <p>Thank you! Your response has been recorded.</p>
-    </div>
+    <p style="color: var(--text-dim); font-size: 14px; margin-top: -10px; margin-bottom: 20px;">
+      Please RSVP by August 30, 2026
+    </p>
+    
+    <!-- PASTE YOUR GOOGLE FORM LINK IN THE href BELOW -->
+    <a href="https://forms.google.com" target="_blank" class="google-rsvp-btn">
+      📝 Click Here To RSVP (Google Form)
+    </a>
   </div>
 
-  <footer>Pit Stop Party • See You At The Finish Line</footer>
+  <footer>Pit Stop Party • See You At The Finish Line 🏁</footer>
 </div>
-
-<script>
-let attendanceChoice = null;
-
-function setAttendance(choice) {
-  attendanceChoice = choice;
-  document.getElementById('btnYes').className = choice === 'yes' ? 'toggle-btn active-yes' : 'toggle-btn';
-  document.getElementById('btnNo').className = choice === 'no' ? 'toggle-btn active-no' : 'toggle-btn';
-}
-
-document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById('guestName').value.trim();
-  const count = document.getElementById('guestCount').value;
-
-  if (!name) {
-    alert("Please enter your name.");
-    return;
-  }
-  if (!attendanceChoice) {
-    alert("Please select whether you are coming or not.");
-    return;
-  }
-
-  const submitBtn = document.getElementById('submitBtn');
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Submitting...";
-
-  // Google Form Action URL & Entry Mapping
-  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdX30X3a0S0p24g5Z0O9mY3465M_Sample/formResponse";
-  
-  const formData = new FormData();
-  formData.append('entry.1000001', name); 
-  formData.append('entry.1000002', count);
-  formData.append('entry.1000003', attendanceChoice === 'yes' ? "Yes" : "No");
-
-  // Send data to Google Forms in background mode
-  fetch(googleFormUrl, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: formData
-  }).then(() => {
-    document.getElementById('rsvpForm').style.display = 'none';
-    document.getElementById('successBox').style.display = 'block';
-  }).catch(() => {
-    // Fallback display if submission completes
-    document.getElementById('rsvpForm').style.display = 'none';
-    document.getElementById('successBox').style.display = 'block';
-  });
-});
-</script>
 
 </body>
 </html>
