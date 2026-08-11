@@ -14,8 +14,8 @@
     --gold: #FFD700;
     --gold-glow: rgba(255, 215, 0, 0.4);
     --bg-dark: #0D0F12;
-    --card-bg: rgba(26, 29, 36, 0.85);
-    --card-border: rgba(255, 255, 255, 0.12);
+    --card-bg: rgba(26, 29, 36, 0.88);
+    --card-border: rgba(255, 255, 255, 0.15);
     --text-white: #FFFFFF;
     --text-dim: #94A3B8;
   }
@@ -30,15 +30,41 @@
     min-height: 100vh;
     padding: 30px 12px;
     background-color: var(--bg-dark);
-    /* PRO CHECKERED BORDER PATTERN */
-    background-image: 
-      linear-gradient(45deg, #14161B 25%, transparent 25%), 
-      linear-gradient(-45deg, #14161B 25%, transparent 25%), 
-      linear-gradient(45deg, transparent 75%, #14161B 75%), 
-      linear-gradient(-45deg, transparent 75%, #14161B 75%);
-    background-size: 32px 32px;
-    background-position: 0 0, 0 16px, 16px -16px, -16px 0px;
+    position: relative;
     overflow-x: hidden;
+  }
+
+  /* BIG F1 CHECKERED BACKDROP BANNER */
+  .f1-bg-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 380px;
+    background: 
+      linear-gradient(180deg, rgba(13, 15, 18, 0.3) 0%, rgba(13, 15, 18, 0.95) 100%),
+      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0 20px, transparent 20px 40px),
+      repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0.5) 0 20px, transparent 20px 40px);
+    background-size: cover;
+    z-index: 0;
+    border-bottom: 3px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  }
+
+  .f1-watermark {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(60px, 18vw, 140px);
+    color: rgba(255, 255, 255, 0.03);
+    letter-spacing: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
   }
 
   /* FLOATING BALLOONS BACKGROUND */
@@ -73,12 +99,13 @@
   .main-wrapper {
     max-width: 640px;
     margin: 0 auto;
-    background: linear-gradient(180deg, #1A1D24 0%, #121419 100%);
+    background: linear-gradient(180deg, rgba(26, 29, 36, 0.95) 0%, rgba(18, 20, 25, 0.98) 100%);
     border-radius: 28px;
     padding: 12px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(142, 68, 173, 0.25);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(142, 68, 173, 0.3);
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
     z-index: 1;
   }
 
@@ -90,6 +117,27 @@
     background: radial-gradient(circle at 50% 20%, #252830 0%, #15171C 100%);
     position: relative;
     overflow: hidden;
+  }
+
+  /* TOP F1 GRAND PRIX BADGE */
+  .f1-top-badge {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .f1-badge-text {
+    display: inline-block;
+    background: #000;
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 10px var(--gold-glow);
   }
 
   /* BUNTING FLAGS */
@@ -215,7 +263,6 @@
     100% { transform: translateY(-50%) translateX(-60px); }
   }
 
-  /* CAR WRAPPER FACING FORWARD VIA SCALE-X */
   .animated-car-wrapper {
     position: absolute;
     top: 50%;
@@ -241,7 +288,6 @@
     100% { left: 118%; transform: translateY(-50%); }
   }
 
-  /* CHECKERED FINISH LINE */
   .finish-line {
     position: absolute;
     right: 60px;
@@ -445,6 +491,10 @@
 </head>
 <body>
 
+<!-- BIG F1 BACKGROUND BANNER -->
+<div class="f1-bg-banner"></div>
+<div class="f1-watermark">FORMULA 1 GRAND PRIX</div>
+
 <!-- FLOATING BALLOONS BACKGROUND -->
 <div class="balloon-container">
   <div class="floating-balloon">🎈</div>
@@ -456,7 +506,12 @@
 <div class="main-wrapper">
   <div class="chalkboard-frame">
     
-    <!-- Top Bunting Banner -->
+    <!-- Top F1 Grand Prix Badge -->
+    <div class="f1-top-badge">
+      <span class="f1-badge-text">🏎️ FORMULA 1 GRAND PRIX EDITION 🏁</span>
+    </div>
+
+    <!-- Bunting Banner -->
     <div class="bunting-row">
       <div class="flag"></div>
       <div class="flag"></div>
