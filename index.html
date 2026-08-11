@@ -67,7 +67,7 @@
     z-index: 0;
   }
 
-  /* FLOATING BALLOONS BACKGROUND */
+  /* EXTENDED MULTI-BALLOON BACKGROUND */
   .balloon-container {
     position: fixed;
     inset: 0;
@@ -77,22 +77,56 @@
 
   .floating-balloon {
     position: absolute;
-    bottom: -80px;
+    bottom: -90px;
     font-size: 42px;
-    animation: floatUp 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+    animation: floatUp 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.6));
   }
 
-  .floating-balloon:nth-child(1) { left: 4%; animation-duration: 8s; animation-delay: 0s; }
-  .floating-balloon:nth-child(2) { left: 15%; animation-duration: 10s; animation-delay: 2.5s; }
-  .floating-balloon:nth-child(3) { right: 15%; animation-duration: 9s; animation-delay: 1s; }
-  .floating-balloon:nth-child(4) { right: 4%; animation-duration: 11s; animation-delay: 3.5s; }
+  .floating-balloon:nth-child(1) { left: 2%; animation-duration: 7.5s; animation-delay: 0s; }
+  .floating-balloon:nth-child(2) { left: 10%; animation-duration: 9.5s; animation-delay: 1.8s; font-size: 36px; }
+  .floating-balloon:nth-child(3) { left: 20%; animation-duration: 8.2s; animation-delay: 3.5s; }
+  .floating-balloon:nth-child(4) { left: 32%; animation-duration: 10s; animation-delay: 0.8s; font-size: 48px; }
+  .floating-balloon:nth-child(5) { right: 32%; animation-duration: 8.8s; animation-delay: 2.2s; }
+  .floating-balloon:nth-child(6) { right: 20%; animation-duration: 9s; animation-delay: 4.1s; font-size: 38px; }
+  .floating-balloon:nth-child(7) { right: 10%; animation-duration: 11s; animation-delay: 1.2s; }
+  .floating-balloon:nth-child(8) { right: 2%; animation-duration: 7.8s; animation-delay: 2.8s; font-size: 46px; }
 
   @keyframes floatUp {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    15% { opacity: 0.85; }
-    85% { opacity: 0.85; }
-    100% { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+    12% { opacity: 0.9; }
+    88% { opacity: 0.9; }
+    100% { transform: translateY(-118vh) rotate(30deg); opacity: 0; }
+  }
+
+  /* CONTINUOUS POPPING BACKGROUND FIREWORKS */
+  .bg-fireworks-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .bg-burst {
+    position: absolute;
+    font-size: 34px;
+    animation: burstPop 2.2s ease-out infinite;
+    opacity: 0;
+  }
+
+  .bg-burst:nth-child(1) { top: 12%; left: 8%; animation-delay: 0s; }
+  .bg-burst:nth-child(2) { top: 25%; right: 10%; animation-delay: 0.6s; }
+  .bg-burst:nth-child(3) { top: 48%; left: 5%; animation-delay: 1.2s; }
+  .bg-burst:nth-child(4) { top: 62%; right: 7%; animation-delay: 0.3s; }
+  .bg-burst:nth-child(5) { top: 78%; left: 12%; animation-delay: 1.7s; }
+  .bg-burst:nth-child(6) { top: 85%; right: 14%; animation-delay: 0.9s; }
+
+  @keyframes burstPop {
+    0% { transform: scale(0.2) rotate(0deg); opacity: 0; filter: drop-shadow(0 0 2px var(--gold)); }
+    40% { transform: scale(1.4) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 16px var(--pink-accent)); }
+    70% { transform: scale(1.1) rotate(30deg); opacity: 0.8; }
+    100% { transform: scale(0.4) rotate(45deg); opacity: 0; }
   }
 
   /* MAIN WRAPPER CARD */
@@ -495,12 +529,26 @@
 <div class="f1-bg-banner"></div>
 <div class="f1-watermark">FORMULA 1 GRAND PRIX</div>
 
-<!-- FLOATING BALLOONS BACKGROUND -->
+<!-- FLOATING BALLOONS BACKGROUND (DENSER CLUSTER) -->
 <div class="balloon-container">
-  <div class="floating-balloon">🎈</div>
   <div class="floating-balloon">🎈</div>
   <div class="floating-balloon">🎉</div>
   <div class="floating-balloon">🎈</div>
+  <div class="floating-balloon">🥳</div>
+  <div class="floating-balloon">🎈</div>
+  <div class="floating-balloon">✨</div>
+  <div class="floating-balloon">🎈</div>
+  <div class="floating-balloon">🎊</div>
+</div>
+
+<!-- CONTINUOUS POPPING BACKGROUND FIREWORKS -->
+<div class="bg-fireworks-container">
+  <div class="bg-burst">🎆</div>
+  <div class="bg-burst">💥</div>
+  <div class="bg-burst">✨</div>
+  <div class="bg-burst">🎆</div>
+  <div class="bg-burst">💥</div>
+  <div class="bg-burst">🎉</div>
 </div>
 
 <div class="main-wrapper">
