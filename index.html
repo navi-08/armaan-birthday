@@ -1,356 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Armaan Turns One — 3D Racing Party</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg-dark: #08090C;
-    --card-bg: rgba(18, 22, 31, 0.85);
-    --gold: #FFD700;
-    --neon-red: #FF2A4B;
-    --neon-cyan: #00F0FF;
-    --text-white: #F8FAFC;
-    --text-dim: #94A3B8;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  * { box-sizing: border-box; }
+  <title>Armaan Singh Ghuman | Racing Celebration</title>
 
-  body {
-    margin: 0;
-    background-color: var(--bg-dark);
-    background-image: 
-      radial-gradient(circle at 50% 0%, rgba(255, 42, 75, 0.2) 0%, transparent 70%),
-      radial-gradient(circle at 50% 100%, rgba(0, 240, 255, 0.1) 0%, transparent 60%);
-    font-family: 'Space Grotesk', sans-serif;
-    color: var(--text-white);
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  .page {
-    max-width: 620px;
-    margin: 0 auto;
-    padding-bottom: 50px;
-  }
-
-  /* Animated Checkered Header */
-  .checker-pattern {
-    height: 16px;
-    width: 100%;
-    background: repeating-linear-gradient(
-      45deg,
-      #1E293B,
-      #1E293B 10px,
-      #0F172A 10px,
-      #0F172A 20px
-    );
-    border-bottom: 2px solid var(--neon-red);
-  }
-
-  .hero {
-    text-align: center;
-    padding: 36px 20px 10px;
-  }
-
-  .eyebrow {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 13px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: var(--neon-red);
-    font-weight: 800;
-    margin-bottom: 12px;
-    text-shadow: 0 0 12px rgba(255, 42, 75, 0.6);
-  }
-
-  h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
-    font-size: clamp(38px, 9vw, 56px);
-    line-height: 1;
-    letter-spacing: 2px;
-    margin: 0 0 12px;
-    text-transform: uppercase;
-  }
-
-  .gold-text {
-    color: var(--gold);
-    text-shadow: 0 0 18px rgba(255, 215, 0, 0.5);
-  }
-
-  .subtitle {
-    font-size: 16px;
-    color: var(--text-dim);
-    margin: 0;
-    letter-spacing: 0.5px;
-  }
-
-  /* 3D RACE TRACK VISUAL */
-  .track-3d-wrapper {
-    perspective: 800px;
-    margin: 30px 20px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .track-3d {
-    width: 100%;
-    height: 180px;
-    background: #12141C;
-    border-radius: 16px;
-    position: relative;
-    transform: rotateX(32deg) rotateZ(0deg);
-    transform-style: preserve-3d;
-    box-shadow: 
-      0 30px 50px rgba(0, 0, 0, 0.9),
-      0 0 30px rgba(255, 42, 75, 0.2),
-      inset 0 0 15px rgba(255, 255, 255, 0.05);
-    border-top: 3px solid var(--neon-red);
-    border-bottom: 3px solid var(--neon-cyan);
-    overflow: hidden;
-  }
-
-  /* Asphalt texture lines */
-  .asphalt-grid {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-
-  /* 3D Moving Lane Lines */
-  .lane-3d {
-    position: absolute;
-    top: 50%;
-    width: 200%;
-    height: 6px;
-    transform: translateY(-50%);
-    background: repeating-linear-gradient(90deg, var(--gold) 0 30px, transparent 30px 60px);
-    box-shadow: 0 0 10px var(--gold);
-    animation: drive3D 0.7s linear infinite;
-  }
-
-  @keyframes drive3D {
-    0% { transform: translateY(-50%) translateX(0); }
-    100% { transform: translateY(-50%) translateX(-60px); }
-  }
-
-  /* 3D Car Model */
-  .car-3d {
-    position: absolute;
-    top: 35%;
-    font-size: 48px;
-    filter: drop-shadow(0 15px 10px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 15px var(--neon-cyan));
-    animation: carRace3D 4s ease-in-out infinite;
-    transform: translateZ(20px);
-  }
-
-  @keyframes carRace3D {
-    0% { left: 5%; transform: translateZ(20px) scale(0.9); }
-    50% { left: 75%; transform: translateZ(30px) scale(1.1); }
-    100% { left: 5%; transform: translateZ(20px) scale(0.9); }
-  }
-
-  .finish-3d {
-    position: absolute;
-    right: 20px;
-    top: 30%;
-    font-size: 40px;
-    filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.7));
-  }
-
-  /* Glassmorphism Cards */
-  .card {
-    margin: 0 20px 20px;
-    background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    border-radius: 20px;
-    padding: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  }
-
-  .card-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 0 0 18px;
-  }
-
-  .info-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .info-row:last-child { border-bottom: none; }
-
-  .info-icon {
-    font-size: 24px;
-    background: rgba(255, 255, 255, 0.05);
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    flex-shrink: 0;
-  }
-
-  .info-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-dim);
-    margin: 0 0 4px;
-  }
-
-  .info-value {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-white);
-    margin: 0;
-    line-height: 1.4;
-  }
-
-  .map-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 8px;
-    padding: 6px 12px;
-    background: rgba(255, 42, 75, 0.15);
-    color: var(--neon-red);
-    border: 1px solid rgba(255, 42, 75, 0.4);
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .map-btn:hover {
-    background: var(--neon-red);
-    color: #FFF;
-  }
-
-  /* Glowing 3D RSVP Button */
-  .google-rsvp-btn {
-    display: block;
-    width: 100%;
-    padding: 18px;
-    text-align: center;
-    background: linear-gradient(135deg, var(--gold) 0%, #F59E0B 100%);
-    border: none;
-    border-radius: 14px;
-    color: #000;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 800;
-    font-size: 16px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-decoration: none;
-    box-shadow: 
-      0 10px 25px rgba(245, 158, 11, 0.4),
-      0 0 15px rgba(255, 215, 0, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .google-rsvp-btn:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 
-      0 15px 30px rgba(245, 158, 11, 0.6),
-      0 0 25px rgba(255, 215, 0, 0.5);
-  }
-
-  footer {
-    text-align: center;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: var(--text-dim);
-    margin-top: 30px;
-  }
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="page">
-  <div class="checker-pattern"></div>
+  <!-- Background racing lights -->
+  <div class="background-lights"></div>
 
-  <!-- Header Section -->
-  <div class="hero">
-    <p class="eyebrow">🏎️ Start Your Engines</p>
-    <h1>Armaan Turns<br><span class="gold-text">ONE</span></h1>
-    <p class="subtitle">Celebrating the 1st Birthday of<br><strong>Armaan Singh Ghuman</strong></p>
-  </div>
+  <div class="page">
 
-  <!-- 3D Track Visual -->
-  <div class="track-3d-wrapper">
-    <div class="track-3d">
-      <div class="asphalt-grid"></div>
-      <div class="lane-3d"></div>
-      <div class="car-3d">🏎️</div>
-      <div class="finish-3d">🏁</div>
-    </div>
-  </div>
+    <!-- Top racing strip -->
+    <div class="checkered top-checkered"></div>
 
-  <!-- Details Card -->
-  <div class="card">
-    <div class="card-title">📍 Event Details</div>
-    
-    <div class="info-row">
-      <div class="info-icon">📅</div>
-      <div>
-        <p class="info-label">Date & Time</p>
-        <p class="info-value">Sunday, September 6, 2026<br>6:30 PM Onwards</p>
+    <!-- Hero -->
+    <section class="hero">
+
+      <div class="starting-light">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-    </div>
 
-    <div class="info-row">
-      <div class="info-icon">🏎️</div>
-      <div>
-        <p class="info-label">Pit Stop Venue</p>
-        <p class="info-value">
-          <strong>Royale Sakoon</strong><br>
+      <p class="overline">🏁 YOU'RE INVITED 🏁</p>
+
+      <h1>
+        ARMAAN
+        <span>SINGH GHUMAN</span>
+      </h1>
+
+      <div class="red-line"></div>
+
+      <p class="hero-subtitle">
+        GET READY TO RACE INTO AN UNFORGETTABLE CELEBRATION
+      </p>
+
+    </section>
+
+
+    <!-- Event information -->
+    <section class="event-info">
+
+      <div class="info-box">
+        <div class="info-icon">📅</div>
+        <h3>DATE</h3>
+        <p>SEPTEMBER 6, 2026</p>
+      </div>
+
+      <div class="info-box">
+        <div class="info-icon">⏰</div>
+        <h3>TIME</h3>
+        <p>6:30 PM</p>
+      </div>
+
+      <div class="info-box venue-box">
+        <div class="info-icon">📍</div>
+        <h3>VENUE</h3>
+        <p>ROYALE SAKOON</p>
+        <small>
           5200 Mowry Ave, Suite K<br>
           Fremont, CA 94538
-        </p>
-        <a href="https://maps.google.com/?q=Royale+Sakoon+5200+Mowry+Ave+Suite+K+Fremont+CA+94538" target="_blank" class="map-btn">
-          📍 Open in Google Maps ↗
-        </a>
+        </small>
       </div>
-    </div>
+
+    </section>
+
+
+    <!-- Racing banner -->
+    <section class="race-banner">
+
+      <div class="speed-lines"></div>
+
+      <div class="race-number">
+        06
+      </div>
+
+      <div class="banner-content">
+        <p>START YOUR ENGINES</p>
+        <h2>READY. SET. CELEBRATE.</h2>
+        <span>SEE YOU AT THE FINISH LINE</span>
+      </div>
+
+    </section>
+
+
+    <!-- RSVP -->
+    <section class="rsvp">
+
+      <div class="rsvp-header">
+        <p>DRIVER REGISTRATION</p>
+        <h2>WILL YOU JOIN US?</h2>
+        <div class="small-line"></div>
+      </div>
+
+      <form id="rsvpForm">
+
+        <div class="name-field">
+          <label for="guestName">FULL NAME</label>
+
+          <input
+            type="text"
+            id="guestName"
+            name="guestName"
+            placeholder="ENTER YOUR FULL NAME"
+            required
+          >
+        </div>
+
+
+        <div class="choice-title">
+          SELECT YOUR RESPONSE
+        </div>
+
+
+        <div class="rsvp-buttons">
+
+          <button
+            type="submit"
+            name="response"
+            value="yes"
+            class="rsvp-button yes-button"
+          >
+            <span class="button-icon">🏁</span>
+
+            <span>
+              <strong>YES</strong>
+              <small>I'LL BE THERE</small>
+            </span>
+          </button>
+
+
+          <button
+            type="submit"
+            name="response"
+            value="no"
+            class="rsvp-button no-button"
+          >
+            <span class="button-icon">✕</span>
+
+            <span>
+              <strong>NO</strong>
+              <small>CAN'T MAKE IT</small>
+            </span>
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <!-- Confirmation message -->
+      <div id="confirmation" class="confirmation">
+        <div class="check">✓</div>
+        <h3>RESPONSE RECEIVED</h3>
+        <p id="confirmationText"></p>
+      </div>
+
+    </section>
+
+
+    <!-- Directions -->
+    <section class="directions">
+
+      <h3>ROYale SAKOON</h3>
+
+      <p>
+        5200 Mowry Ave, Suite K<br>
+        Fremont, CA 94538
+      </p>
+
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=Royale+Sakoon%2C+5200+Mowry+Ave+Suite+K%2C+Fremont%2C+CA+94538"
+        target="_blank"
+        class="map-button"
+      >
+        📍 GET DIRECTIONS
+      </a>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section class="contact">
+
+      <p>FOR MORE INFORMATION</p>
+
+      <a href="tel:5104681192">
+        510-468-1192
+      </a>
+
+    </section>
+
+
+    <!-- Finish line -->
+    <div class="checkered bottom-checkered"></div>
+
+    <footer>
+      🏎️ ARMAAN SINGH GHUMAN • 2026 🏁
+    </footer>
+
   </div>
 
-  <!-- RSVP Card linked directly to your Google Form -->
-  <div class="card">
-    <div class="card-title">🏁 RSVP Pit Stop</div>
-    <p style="color: var(--text-dim); font-size: 14px; margin-top: -10px; margin-bottom: 20px;">
-      Please RSVP by August 30, 2026
-    </p>
-    
-    <a href="https://forms.gle/vsyZKaj5PoWNDsHD6" target="_blank" class="google-rsvp-btn">
-      📝 Click Here To RSVP (Google Form)
-    </a>
-  </div>
 
-  <footer>Pit Stop Party • See You At The Finish Line 🏁</footer>
-</div>
+  <script src="script.js"></script>
 
 </body>
 </html>
