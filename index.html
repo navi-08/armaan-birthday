@@ -27,7 +27,7 @@
     min-height: 100vh;
     padding: 20px 10px;
     
-    /* CHECKERED BORDER BACKGROUND */
+    /* CHECKERED BORDER BACKGROUND MATCHING IMAGE */
     background-color: #000;
     background-image: 
       linear-gradient(45deg, #111 25%, transparent 25%), 
@@ -51,12 +51,12 @@
     border: 4px solid var(--purple-accent);
   }
 
-  /* YELLOW DASHED BORDER */
+  /* YELLOW DASHED BORDER MATCHING BACKDROP */
   .chalkboard-frame {
     border: 3px dashed var(--gold);
     border-radius: 16px;
     padding: 24px 16px;
-    background: rgba(30, 32, 38, 0.9);
+    background: rgba(30, 32, 38, 0.92);
     position: relative;
     overflow: hidden;
   }
@@ -129,11 +129,11 @@
     font-weight: 600;
   }
 
-  /* ANIMATED RACETRACK WITH CAR & FINISH LINE CELEBRATION */
+  /* ANIMATED RACETRACK WITH FORWARD MOVING CAR & FINISH LINE */
   .track-container {
     background: #111318;
     border-radius: 16px;
-    padding: 16px;
+    padding: 16px 10px;
     margin-bottom: 24px;
     border: 2px solid rgba(255, 215, 0, 0.3);
     position: relative;
@@ -141,14 +141,14 @@
   }
 
   .road {
-    height: 60px;
+    height: 70px;
     background: #1C1E24;
     border-radius: 12px;
     position: relative;
     display: flex;
     align-items: center;
-    border-top: 2px solid var(--pink-accent);
-    border-bottom: 2px solid var(--pink-accent);
+    border-top: 3px solid var(--pink-accent);
+    border-bottom: 3px solid var(--pink-accent);
     overflow: hidden;
   }
 
@@ -159,7 +159,7 @@
     top: 50%;
     transform: translateY(-50%);
     background: repeating-linear-gradient(90deg, var(--gold) 0 25px, transparent 25px 50px);
-    animation: moveRoad 0.8s linear infinite;
+    animation: moveRoad 0.6s linear infinite;
   }
 
   @keyframes moveRoad {
@@ -167,48 +167,89 @@
     100% { transform: translateY(-50%) translateX(-50px); }
   }
 
-  .animated-car {
+  /* CAR WRAPPER MOVING FORWARD (FACING RIGHT VIA SCALE-X FLIP) */
+  .animated-car-wrapper {
     position: absolute;
-    font-size: 34px;
     top: 50%;
     transform: translateY(-50%);
-    animation: raceAndCelebrate 4s ease-in-out infinite;
+    width: 75px;
+    height: 40px;
+    animation: raceForward 3.5s linear infinite;
     z-index: 2;
   }
 
-  @keyframes raceAndCelebrate {
-    0% { left: -10%; }
-    75% { left: 75%; }
-    85% { left: 78%; transform: translateY(-60%) rotate(-5deg); }
-    95% { left: 82%; transform: translateY(-40%) rotate(5deg); }
-    100% { left: 110%; transform: translateY(-50%); }
+  /* SVG F1 Car styling matching red image car */
+  .animated-car-wrapper svg {
+    width: 100%;
+    height: 100%;
+    /* Flip horizontally so the car faces forward (right) */
+    transform: scaleX(-1);
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
   }
 
+  @keyframes raceForward {
+    0% { left: -20%; }
+    75% { left: 70%; }
+    85% { left: 73%; transform: translateY(-60%) scale(1.05); }
+    92% { left: 76%; transform: translateY(-40%) scale(0.98); }
+    100% { left: 115%; transform: translateY(-50%); }
+  }
+
+  /* CHECKERED FINISH LINE */
   .finish-line {
     position: absolute;
-    right: 50px;
+    right: 55px;
     top: 0;
     bottom: 0;
-    width: 16px;
+    width: 18px;
     background: repeating-linear-gradient(
       0deg,
       #FFF 0 10px,
       #000 10px 20px
     );
     z-index: 1;
-    box-shadow: 0 0 10px var(--gold);
+    box-shadow: 0 0 12px var(--gold);
+    border-left: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
   }
 
   .celebration-sparkles {
     position: absolute;
-    right: 20px;
-    font-size: 20px;
-    animation: popSparkles 1s ease-in-out infinite alternate;
+    right: 12px;
+    font-size: 24px;
+    animation: popSparkles 0.8s ease-in-out infinite alternate;
   }
 
   @keyframes popSparkles {
-    0% { transform: scale(0.9); opacity: 0.7; }
-    100% { transform: scale(1.2); opacity: 1; }
+    0% { transform: scale(0.85); opacity: 0.7; }
+    100% { transform: scale(1.25); opacity: 1; }
+  }
+
+  /* BACKDROP CAR DISPLAY ROW */
+  .cars-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 14px;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .car-item {
+    width: 90px;
+    height: 45px;
+  }
+
+  .car-item svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.8));
+  }
+
+  .car-item.silver svg {
+    transform: scaleX(-1); /* Facing forward */
   }
 
   /* DETAILS CARD */
@@ -332,7 +373,7 @@
       <div class="flag"></div>
     </div>
 
-    <!-- Header Text with Armaan's Racing Taglines -->
+    <!-- Header Text matching the backdrop -->
     <div class="hero">
       <p class="eyebrow">Race on over to</p>
       <div class="tagline-badge">🏎️ Armaan’s First Lap To Fun!</div>
@@ -340,13 +381,64 @@
       <p class="subtitle">One Year in the Fast Lane!<br>Celebrating <strong style="color: #FFF; font-size: 20px;">Armaan Singh Ghuman</strong></p>
     </div>
 
-    <!-- Animated Racing Track with Finish Line Celebration -->
+    <!-- Animated Racing Track with Forward Moving Red F1 Car & Finish Line -->
     <div class="track-container">
       <div class="road">
         <div class="center-dashes"></div>
-        <div class="animated-car">🏎️</div>
+        
+        <!-- Forward Racing F1 Car -->
+        <div class="animated-car-wrapper">
+          <svg viewBox="0 0 120 50">
+            <!-- Red F1 Body -->
+            <path d="M 10 30 Q 30 20 60 20 L 95 24 Q 110 25 115 32 L 110 38 Q 80 40 10 38 Z" fill="#E60000"/>
+            <path d="M 40 20 Q 55 12 75 20 Z" fill="#B30000"/>
+            <!-- Cockpit & Driver Helmet -->
+            <circle cx="58" cy="18" r="7" fill="#FFD700"/>
+            <path d="M 50 22 Q 60 14 70 22 Z" fill="#111"/>
+            <!-- Front & Rear Wings -->
+            <rect x="2" y="26" width="12" height="10" fill="#222" rx="2"/>
+            <rect x="105" y="24" width="12" height="12" fill="#222" rx="2"/>
+            <!-- Wheels -->
+            <circle cx="28" cy="36" r="11" fill="#111" stroke="#444" stroke-width="3"/>
+            <circle cx="28" cy="36" r="4" fill="#DDD"/>
+            <circle cx="88" cy="36" r="11" fill="#111" stroke="#444" stroke-width="3"/>
+            <circle cx="88" cy="36" r="4" fill="#DDD"/>
+          </svg>
+        </div>
+
         <div class="finish-line"></div>
-        <div class="celebration-sparkles">🎉🥳</div>
+        <div class="celebration-sparkles">🎉🏆</div>
+      </div>
+    </div>
+
+    <!-- Backdrop Cars Showcase Banner -->
+    <div class="cars-banner">
+      <!-- Silver F1 Car (Left) -->
+      <div class="car-item silver">
+        <svg viewBox="0 0 120 50">
+          <path d="M 10 30 Q 30 20 60 20 L 95 24 Q 110 25 115 32 L 110 38 Q 80 40 10 38 Z" fill="#E2E8F0"/>
+          <path d="M 35 22 Q 55 15 80 22 Z" fill="#0088CC"/>
+          <circle cx="58" cy="18" r="7" fill="#E8318A"/>
+          <rect x="2" y="26" width="12" height="10" fill="#222" rx="2"/>
+          <rect x="105" y="24" width="12" height="12" fill="#222" rx="2"/>
+          <circle cx="28" cy="36" r="10" fill="#111" stroke="#CBD5E1" stroke-width="2"/>
+          <circle cx="88" cy="36" r="10" fill="#111" stroke="#CBD5E1" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <span style="font-size: 24px;">🏆</span>
+
+      <!-- Red F1 Car (Right) -->
+      <div class="car-item">
+        <svg viewBox="0 0 120 50">
+          <path d="M 10 30 Q 30 20 60 20 L 95 24 Q 110 25 115 32 L 110 38 Q 80 40 10 38 Z" fill="#E60000"/>
+          <path d="M 40 20 Q 55 12 75 20 Z" fill="#B30000"/>
+          <circle cx="58" cy="18" r="7" fill="#FFD700"/>
+          <rect x="2" y="26" width="12" height="10" fill="#222" rx="2"/>
+          <rect x="105" y="24" width="12" height="12" fill="#222" rx="2"/>
+          <circle cx="28" cy="36" r="10" fill="#111" stroke="#FFD700" stroke-width="2"/>
+          <circle cx="88" cy="36" r="10" fill="#111" stroke="#FFD700" stroke-width="2"/>
+        </svg>
       </div>
     </div>
 
