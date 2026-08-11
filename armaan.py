@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armaan Turns One — Lil' Racer Pit Stop Party</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --asphalt: #1B1B1F;
+    --asphalt-deep: #101013;
+    --track-grey: #2E2E33;
+    --racing-red: #D62828;
+    --chrome: #C7CBD1;
+    --flag-white: #F5F5F0;
+    --volt: #F2C94C;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--asphalt-deep);
+    font-family: 'Poppins', sans-serif;
+    color: var(--flag-white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    background: radial-gradient(ellipse at top, var(--asphalt) 0%, var(--asphalt-deep) 80%);
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 60px;
+  }
+
+  /* Checkered Border Strips */
+  .checker-strip {
+    height: 18px;
+    width: 100%;
+    background-image: repeating-linear-gradient(
+      90deg, 
+      var(--flag-white) 0 18px, 
+      var(--asphalt) 18px 36px
+    );
+    background-size: 36px 18px;
+  }
+
+  /* Hero Banner */
+  .hero {
+    text-align: center;
+    padding: 30px 24px 10px;
+  }
+
+  .eyebrow {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--racing-red);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 10vw, 62px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    margin: 0 0 8px;
+    color: var(--flag-white);
+    text-transform: uppercase;
+  }
+
+  .name-highlight {
+    color: var(--volt);
+    -webkit-text-stroke: 1px var(--racing-red);
+  }
+
+  .subtitle {
+    font-size: 15.5px;
+    font-style: italic;
+    color: var(--chrome);
+    margin: 6px 0 0;
+  }
+
+  /* Race Track Animation */
+  .track-wrap {
+    position: relative;
+    margin: 22px 0;
+    padding: 18px 0 24px;
+    background: var(--track-grey);
+    overflow: hidden;
+    border-top: 4px solid var(--asphalt-deep);
+    border-bottom: 4px solid var(--asphalt-deep);
+  }
+
+  .road {
+    position: relative;
+    height: 64px;
+    background: #232327;
+  }
+
+  .lane-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 200%;
+    height: 6px;
+    transform: translateY(-50%);
+    background-image: repeating-linear-gradient(90deg, var(--volt) 0 28px, transparent 28px 56px);
+    animation: laneMove 1.1s linear infinite;
+  }
+
+  @keyframes laneMove {
+    from { transform: translateY(-50%) translateX(0); }
+    to { transform: translateY(-50%) translateX(-56px); }
+  }
+
+  .car {
+    position: absolute;
+    top: 8px;
+    font-size: 34px;
+    animation: driveAcross 5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.5));
+  }
+
+  @keyframes driveAcross {
+    0% { left: -10%; transform: scaleX(1); }
+    48% { left: 90%; transform: scaleX(1); }
+    50% { left: 90%; transform: scaleX(-1); }
+    98% { left: -10%; transform: scaleX(-1); }
+    100% { left: -10%; transform: scaleX(1); }
+  }
+
+  .finish-flag {
+    position: absolute;
+    right: 6%;
+    top: 14px;
+    font-size: 28px;
+  }
+
+  .track-caption {
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--chrome);
+    margin-top: 10px;
+  }
+
+  /* Details Card */
+  .card {
+    margin: 8px 22px;
+    background: var(--flag-white);
+    color: var(--asphalt-deep);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.4);
+    position: relative;
+    border: 3px solid var(--racing-red);
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px dashed rgba(27,27,31,0.2);
+  }
+
+  .detail-row:last-child { border-bottom: none; }
+
+  .detail-icon {
+    font-size: 22px;
+    width: 30px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .detail-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--racing-red);
+    margin: 0 0 2px;
+  }
+
+  .detail-value {
+    font-size: 15.5px;
+    font-weight: 500;
+    color: var(--asphalt);
+    line-height: 1.4;
+  }
+
+  .map-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--racing-red);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  /* RSVP Section */
+  .rsvp-section {
+    margin: 30px 22px 0;
+    text-align: center;
+  }
+
+  .rsvp-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--volt);
+    margin: 0 0 4px;
+  }
+
+  .rsvp-sub {
+    font-size: 14px;
+    color: var(--chrome);
+    margin: 0 0 18px;
+  }
+
+  .rsvp-form {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 22px;
+    text-align: left;
+  }
+
+  .field { margin-bottom: 14px; }
+
+  .field label {
+    display: block;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--volt);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .field input {
+    width: 100%;
+    padding: 11px 13px;
+    border-radius: 8px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14.5px;
+    background: var(--flag-white);
+    color: var(--asphalt-deep);
+  }
+
+  .field input:focus {
+    outline: 3px solid var(--racing-red);
+  }
+
+  .rsvp-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .rsvp-btn {
+    flex: 1;
+    padding: 13px 10px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease;
+    background: rgba(255,255,255,0.1);
+    color: var(--flag-white);
+  }
+
+  .rsvp-btn:hover { transform: translateY(-2px); }
+  .rsvp-btn.selected-yes { background: #2E7D32; border-color: #2E7D32; }
+  .rsvp-btn.selected-no { background: var(--racing-red); border-color: var(--racing-red); }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    background: var(--volt);
+    color: var(--asphalt-deep);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  .submit-btn:hover { transform: translateY(-2px); }
+
+  .status-msg {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 13.5px;
+    color: var(--volt);
+    min-height: 18px;
+  }
+
+  .phone-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--chrome);
+    margin-top: 18px;
+  }
+
+  .phone-note a {
+    color: var(--volt);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 28px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .car, .lane-line { animation: none; }
+    .car { left: 40%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="checker-strip"></div>
+
+  <!-- Hero Header -->
+  <div class="hero">
+    <p class="eyebrow">Start Your Engines</p>
+    <h1>Armaan Turns<br><span class="name-highlight">ONE</span></h1>
+    <p class="subtitle">Celebrating the 1st Birthday of<br><strong>Armaan Singh Ghuman</strong></p>
+  </div>
+
+  <!-- Interactive Race Track -->
+  <div class="track-wrap">
+    <div class="road">
+      <div class="lane-line"></div>
+      <div class="car">🏎️</div>
+      <div class="finish-flag">🏁</div>
+    </div>
+    <p class="track-caption">Pole Position At The Party Awaits</p>
+  </div>
+
+  <!-- Details Card -->
+  <div class="card">
+    <div class="detail-row">
+      <div class="detail-icon">📅</div>
+      <div>
+        <p class="detail-label">Date & Time</p>
+        <p class="detail-value">Sunday, September 6, 2026<br>6:30 PM Onwards</p>
+      </div>
+    </div>
+    <div class="detail-row">
+      <div class="detail-icon">📍</div>
+      <div>
+        <p class="detail-label">Pit Stop Venue</p>
+        <p class="detail-value">
+          <strong>Royale Sakoon</strong><br>
+          5200 Mowry Ave, Suite K<br>
+          Fremont, CA 94538
+        </p>
+        <a href="https://maps.google.com/?q=Royale+Sakoon+5200+Mowry+Ave+Suite+K+Fremont+CA+94538" target="_blank" class="map-link">
+          Get Directions ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RSVP Form Section -->
+  <div class="rsvp-section">
+    <h2 class="rsvp-title">Ready to race with us?</h2>
+    <p class="rsvp-sub">Please RSVP by August 30, 2026</p>
+
+    <div class="rsvp-form">
+      <div class="field">
+        <label for="guestName">Your Full Name</label>
+        <input type="text" id="guestName" placeholder="e.g. Priya Kaur">
+      </div>
+
+      <div class="field">
+        <label for="guestCount">Number of Guests (including you)</label>
+        <input type="number" id="guestCount" min="1" value="1">
+      </div>
+
+      <div class="field">
+        <label>Attendance Status</label>
+        <div class="rsvp-buttons">
+          <button type="button" class="rsvp-btn" id="btnYes" onclick="selectRsvp('yes')">🏁 Yes, we're in!</button>
+          <button type="button" class="rsvp-btn" id="btnNo" onclick="selectRsvp('no')">🚧 Can't make it</button>
+        </div>
+      </div>
+
+      <a id="submitBtn" class="submit-btn" href="#" onclick="submitRsvp(event)">Submit RSVP via Text</a>
+      <div class="status-msg" id="statusMsg"></div>
+    </div>
+
+    <p class="phone-note">
+      Prefer to call or text directly?<br>
+      Reach out to <a href="tel:5104681192">510-468-1192</a> or <a href="tel:5105985672">510-598-5672</a>
+    </p>
+  </div>
+
+  <footer>See you at the finish line 🏁</footer>
+  <div class="checker-strip" style="margin-top: 30px;"></div>
+</div>
+
+<script>
+let selectedResponse = null;
+const hostPhoneNumber = "5104681192";
+
+function selectRsvp(response) {
+  selectedResponse = response;
+  document.getElementById('btnYes').classList.toggle('selected-yes', response === 'yes');
+  document.getElementById('btnNo').classList.toggle('selected-no', response === 'no');
+  document.getElementById('statusMsg').textContent = '';
+}
+
+function submitRsvp(e) {
+  e.preventDefault();
+  const name = document.getElementById('guestName').value.trim();
+  const count = parseInt(document.getElementById('guestCount').value, 10) || 1;
+  const statusEl = document.getElementById('statusMsg');
+
+  if (!name) {
+    statusEl.textContent = 'Please enter your name.';
+    return;
+  }
+  if (!selectedResponse) {
+    statusEl.textContent = 'Please select "Yes" or "Can\'t make it".';
+    return;
+  }
+
+  const choice = selectedResponse === 'yes' ? "Yes, coming!" : "Can't make it";
+  const message = `RSVP for Armaan's 1st Birthday:\nName: ${name}\nAttending: ${choice}\nGuest Count: ${count}`;
+
+  // Triggers SMS app pre-filled with the RSVP message on mobile devices
+  window.location.href = `sms:${hostPhoneNumber}?body=${encodeURIComponent(message)}`;
+}
+</script>
+
+</body>
+</html>
