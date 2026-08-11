@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Armaan Turns One — Race On Over!</title>
+<title>Armaan Turns One — Grand Prix Celebration</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:ital,wght@0,800;0,900;1,800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
     border: 4px solid var(--purple-accent);
   }
 
-  /* YELLOW DASHED BORDER MATCHING BACKDROP */
+  /* YELLOW DASHED BORDER */
   .chalkboard-frame {
     border: 3px dashed var(--gold);
     border-radius: 16px;
@@ -66,7 +66,7 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .flag {
@@ -81,12 +81,7 @@
     border-top-color: var(--purple-accent);
   }
 
-  .flag.checker {
-    border-top-color: #FFF;
-    position: relative;
-  }
-
-  /* HERO HEADER */
+  /* HERO HEADER & TAGLINES */
   .hero {
     text-align: center;
   }
@@ -95,11 +90,25 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
     font-style: italic;
-    font-size: clamp(22px, 6vw, 32px);
+    font-size: clamp(20px, 5.5vw, 28px);
     color: var(--text-white);
-    margin: 0 0 6px 0;
+    margin: 0 0 4px 0;
     text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
     letter-spacing: -0.5px;
+  }
+
+  .tagline-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--pink-accent), var(--purple-accent));
+    color: #FFF;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(232, 49, 138, 0.4);
   }
 
   .main-title {
@@ -108,7 +117,7 @@
     font-style: italic;
     font-size: clamp(34px, 8vw, 48px);
     color: var(--purple-accent);
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     text-shadow: 0 0 15px rgba(142, 68, 173, 0.6), 2px 2px 0px #FFF;
     line-height: 1.1;
   }
@@ -116,27 +125,93 @@
   .subtitle {
     font-size: 17px;
     color: var(--text-dim);
-    margin: 0 0 20px 0;
+    margin: 0 0 16px 0;
     font-weight: 600;
   }
 
-  /* TROPHY & RACING GRAPHIC ROW */
-  .graphic-banner {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 14px;
-    padding: 12px;
+  /* ANIMATED RACETRACK WITH CAR & FINISH LINE CELEBRATION */
+  .track-container {
+    background: #111318;
+    border-radius: 16px;
+    padding: 16px;
     margin-bottom: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
   }
 
-  .graphic-item {
-    font-size: 36px;
+  .road {
+    height: 60px;
+    background: #1C1E24;
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid var(--pink-accent);
+    border-bottom: 2px solid var(--pink-accent);
+    overflow: hidden;
   }
 
-  /* EVENT DETAILS CARD */
+  .center-dashes {
+    position: absolute;
+    width: 200%;
+    height: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: repeating-linear-gradient(90deg, var(--gold) 0 25px, transparent 25px 50px);
+    animation: moveRoad 0.8s linear infinite;
+  }
+
+  @keyframes moveRoad {
+    0% { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(-50px); }
+  }
+
+  .animated-car {
+    position: absolute;
+    font-size: 34px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: raceAndCelebrate 4s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  @keyframes raceAndCelebrate {
+    0% { left: -10%; }
+    75% { left: 75%; }
+    85% { left: 78%; transform: translateY(-60%) rotate(-5deg); }
+    95% { left: 82%; transform: translateY(-40%) rotate(5deg); }
+    100% { left: 110%; transform: translateY(-50%); }
+  }
+
+  .finish-line {
+    position: absolute;
+    right: 50px;
+    top: 0;
+    bottom: 0;
+    width: 16px;
+    background: repeating-linear-gradient(
+      0deg,
+      #FFF 0 10px,
+      #000 10px 20px
+    );
+    z-index: 1;
+    box-shadow: 0 0 10px var(--gold);
+  }
+
+  .celebration-sparkles {
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+    animation: popSparkles 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes popSparkles {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    100% { transform: scale(1.2); opacity: 1; }
+  }
+
+  /* DETAILS CARD */
   .info-card {
     background: rgba(15, 17, 21, 0.85);
     border-radius: 16px;
@@ -257,18 +332,22 @@
       <div class="flag"></div>
     </div>
 
-    <!-- Header Text matching the backdrop -->
+    <!-- Header Text with Armaan's Racing Taglines -->
     <div class="hero">
       <p class="eyebrow">Race on over to</p>
+      <div class="tagline-badge">🏎️ Armaan’s First Lap To Fun!</div>
       <h1 class="main-title">Birthday<br>Party</h1>
-      <p class="subtitle">Celebrating 1st Birthday of<br><strong style="color: #FFF; font-size: 20px;">Armaan Singh Ghuman</strong></p>
+      <p class="subtitle">One Year in the Fast Lane!<br>Celebrating <strong style="color: #FFF; font-size: 20px;">Armaan Singh Ghuman</strong></p>
     </div>
 
-    <!-- Race Graphic Row -->
-    <div class="graphic-banner">
-      <span class="graphic-item">🏎️</span>
-      <span class="graphic-item">🏆</span>
-      <span class="graphic-item">🏁</span>
+    <!-- Animated Racing Track with Finish Line Celebration -->
+    <div class="track-container">
+      <div class="road">
+        <div class="center-dashes"></div>
+        <div class="animated-car">🏎️</div>
+        <div class="finish-line"></div>
+        <div class="celebration-sparkles">🎉🥳</div>
+      </div>
     </div>
 
     <!-- Details Card -->
