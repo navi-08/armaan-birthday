@@ -4,29 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Armaan Singh Ghuman | Racing Celebration</title>
+  <title>Armaan Singh Ghuman | You're Invited</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Background racing lights -->
-  <div class="background-lights"></div>
+  <div class="background"></div>
 
-  <div class="page">
+  <main class="container">
 
-    <!-- Top racing strip -->
-    <div class="checkered top-checkered"></div>
+    <div class="checkered"></div>
 
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="hero">
 
-      <div class="starting-light">
+      <div class="lights">
         <span></span>
         <span></span>
         <span></span>
@@ -34,7 +36,7 @@
         <span></span>
       </div>
 
-      <p class="overline">🏁 YOU'RE INVITED 🏁</p>
+      <p class="top-text">🏁 YOU'RE INVITED 🏁</p>
 
       <h1>
         ARMAAN
@@ -43,32 +45,33 @@
 
       <div class="red-line"></div>
 
-      <p class="hero-subtitle">
-        GET READY TO RACE INTO AN UNFORGETTABLE CELEBRATION
+      <p class="subtitle">
+        START YOUR ENGINES FOR AN UNFORGETTABLE CELEBRATION
       </p>
 
     </section>
 
 
-    <!-- Event information -->
-    <section class="event-info">
+    <!-- EVENT DETAILS -->
+    <section class="details">
 
-      <div class="info-box">
-        <div class="info-icon">📅</div>
+      <div class="card">
+        <div class="icon">📅</div>
         <h3>DATE</h3>
         <p>SEPTEMBER 6, 2026</p>
       </div>
 
-      <div class="info-box">
-        <div class="info-icon">⏰</div>
+      <div class="card">
+        <div class="icon">⏰</div>
         <h3>TIME</h3>
         <p>6:30 PM</p>
       </div>
 
-      <div class="info-box venue-box">
-        <div class="info-icon">📍</div>
+      <div class="card">
+        <div class="icon">📍</div>
         <h3>VENUE</h3>
         <p>ROYALE SAKOON</p>
+
         <small>
           5200 Mowry Ave, Suite K<br>
           Fremont, CA 94538
@@ -78,19 +81,21 @@
     </section>
 
 
-    <!-- Racing banner -->
+    <!-- RACING BANNER -->
     <section class="race-banner">
 
-      <div class="speed-lines"></div>
-
-      <div class="race-number">
-        06
-      </div>
+      <div class="big-number">06</div>
 
       <div class="banner-content">
+
         <p>START YOUR ENGINES</p>
+
         <h2>READY. SET. CELEBRATE.</h2>
-        <span>SEE YOU AT THE FINISH LINE</span>
+
+        <span>
+          SEE YOU AT THE FINISH LINE
+        </span>
+
       </div>
 
     </section>
@@ -99,82 +104,79 @@
     <!-- RSVP -->
     <section class="rsvp">
 
-      <div class="rsvp-header">
+      <div class="rsvp-title">
+
         <p>DRIVER REGISTRATION</p>
+
         <h2>WILL YOU JOIN US?</h2>
+
         <div class="small-line"></div>
+
       </div>
 
-      <form id="rsvpForm">
 
-        <div class="name-field">
-          <label for="guestName">FULL NAME</label>
+      <label for="guestName">
+        ENTER YOUR FULL NAME
+      </label>
 
-          <input
-            type="text"
-            id="guestName"
-            name="guestName"
-            placeholder="ENTER YOUR FULL NAME"
-            required
-          >
-        </div>
+      <input
+        type="text"
+        id="guestName"
+        placeholder="YOUR FULL NAME"
+        autocomplete="name"
+      >
 
 
-        <div class="choice-title">
-          SELECT YOUR RESPONSE
-        </div>
+      <p class="select-text">
+        SELECT YOUR RESPONSE
+      </p>
 
 
-        <div class="rsvp-buttons">
+      <div class="buttons">
 
-          <button
-            type="submit"
-            name="response"
-            value="yes"
-            class="rsvp-button yes-button"
-          >
-            <span class="button-icon">🏁</span>
+        <!-- YES -->
+        <button
+          class="yes"
+          onclick="submitRSVP('YES')"
+        >
 
-            <span>
-              <strong>YES</strong>
-              <small>I'LL BE THERE</small>
-            </span>
-          </button>
+          <span class="button-icon">🏁</span>
 
+          <span>
+            <strong>YES</strong>
+            <small>I'LL BE THERE</small>
+          </span>
 
-          <button
-            type="submit"
-            name="response"
-            value="no"
-            class="rsvp-button no-button"
-          >
-            <span class="button-icon">✕</span>
-
-            <span>
-              <strong>NO</strong>
-              <small>CAN'T MAKE IT</small>
-            </span>
-          </button>
-
-        </div>
-
-      </form>
+        </button>
 
 
-      <!-- Confirmation message -->
-      <div id="confirmation" class="confirmation">
-        <div class="check">✓</div>
-        <h3>RESPONSE RECEIVED</h3>
-        <p id="confirmationText"></p>
+        <!-- NO -->
+        <button
+          class="no"
+          onclick="submitRSVP('NO')"
+        >
+
+          <span class="button-icon">✕</span>
+
+          <span>
+            <strong>NO</strong>
+            <small>CAN'T MAKE IT</small>
+          </span>
+
+        </button>
+
       </div>
+
+
+      <div id="message"></div>
 
     </section>
 
 
-    <!-- Directions -->
-    <section class="directions">
+    <!-- LOCATION -->
+    <section class="location">
 
-      <h3>ROYale SAKOON</h3>
+      <h3>ROYALE SAKOON</h3>
 
       <p>
         5200 Mowry Ave, Suite K<br>
@@ -184,7 +186,6 @@
       <a
         href="https://www.google.com/maps/search/?api=1&query=Royale+Sakoon%2C+5200+Mowry+Ave+Suite+K%2C+Fremont%2C+CA+94538"
         target="_blank"
-        class="map-button"
       >
         📍 GET DIRECTIONS
       </a>
@@ -192,7 +193,7 @@
     </section>
 
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section class="contact">
 
       <p>FOR MORE INFORMATION</p>
@@ -204,14 +205,13 @@
     </section>
 
 
-    <!-- Finish line -->
-    <div class="checkered bottom-checkered"></div>
+    <div class="checkered"></div>
 
     <footer>
       🏎️ ARMAAN SINGH GHUMAN • 2026 🏁
     </footer>
 
-  </div>
+  </main>
 
 
   <script src="script.js"></script>
