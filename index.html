@@ -16,6 +16,7 @@
     --chrome: #C7CBD1;
     --flag-white: #F5F5F0;
     --volt: #F2C94C;
+    --whatsapp-green: #25D366;
   }
 
   * { box-sizing: border-box; }
@@ -299,8 +300,8 @@
     padding: 14px;
     border-radius: 8px;
     border: none;
-    background: var(--volt);
-    color: var(--asphalt-deep);
+    background: var(--whatsapp-green);
+    color: #FFFFFF;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 700;
     font-size: 17px;
@@ -423,7 +424,7 @@
         </div>
       </div>
 
-      <a id="submitBtn" class="submit-btn" href="#" onclick="submitRsvp(event)">Submit RSVP via Text</a>
+      <a id="submitBtn" class="submit-btn" href="#" onclick="submitRsvp(event)">💬 Submit RSVP via WhatsApp</a>
       <div class="status-msg" id="statusMsg"></div>
     </div>
 
@@ -466,8 +467,8 @@ function submitRsvp(e) {
   const choice = selectedResponse === 'yes' ? "Yes, coming!" : "Can't make it";
   const message = `RSVP for Armaan's 1st Birthday:\nName: ${name}\nAttending: ${choice}\nGuest Count: ${count}`;
 
-  // Triggers SMS app pre-filled with the RSVP message on mobile devices
-  window.location.href = `sms:${hostPhoneNumber}?body=${encodeURIComponent(message)}`;
+  // Opens WhatsApp pre-filled message (works on mobile & desktop)
+  window.open(`https://wa.me/1${hostPhoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
 }
 </script>
 
